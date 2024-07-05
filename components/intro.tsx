@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import profile from "../public/profile_pic.jpg";
@@ -7,10 +8,25 @@ import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
+import { useActiveSectionContext } from "../context/active-section-context";
+import { useInView } from "react-intersection-observer";
 
 export default function Intro() {
+    const { setActiveSection } = useActiveSectionContext();
+    const { ref, inView } = useInView({ threshold: 0.5 });
+
+    useEffect(() => {
+        if (inView) {
+            setActiveSection("Home");
+        }
+    }, [inView]);
+
     return (
-        <section className="mb-28 max-w-[50rem] text-center sm:mb-0">
+        <section
+            className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[70rem]"
+            id="home"
+            ref={ref}
+        >
             <div className="flex items-center justify-center">
                 <div className="relative">
                     <motion.div
@@ -43,7 +59,7 @@ export default function Intro() {
                     </motion.span>
                 </div>
             </div>
-            <motion.p
+            <motion.h1
                 className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -55,7 +71,7 @@ export default function Intro() {
                 experience. I enjoy building&nbsp;
                 <span className="italic">sites and apps.&nbsp;</span>My focus
                 is&nbsp;<span className="underline">React.Js (Next.Js)</span>.
-            </motion.p>
+            </motion.h1>
             <motion.div
                 className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 font-medium"
                 initial={{ opacity: 0, y: 100 }}
@@ -79,19 +95,35 @@ export default function Intro() {
                     <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
                 </Link>
                 <Link
-                    className="bg-white p-[10px] text-gray-700 flex items-center gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
+                    className="hidden bg-white p-[10px] text-gray-700 md:flex md:items-center md:gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
                     target="_blank"
                     href="https://www.linkedin.com"
                 >
                     <BsLinkedin />
                 </Link>
                 <Link
-                    className="bg-white p-[10px] text-gray-700 flex items-center gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
+                    className="hidden bg-white p-[10px] text-gray-700 md:flex md:items-center md:gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
                     target="_blank"
                     href="https://www.github.com"
                 >
                     <FaGithubSquare />
                 </Link>
+                <div className="sm:hidden flex items-center justify-center gap-2">
+                    <Link
+                        className="bg-white p-[10px] text-gray-700 flex items-center gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
+                        target="_blank"
+                        href="https://www.linkedin.com"
+                    >
+                        <BsLinkedin />
+                    </Link>
+                    <Link
+                        className="bg-white p-[10px] text-gray-700 flex items-center gap-2 rounded-full focus:scale-110 hover:scale-110 hover:text-gray-950 active:scale-105 transition border border-black/10"
+                        target="_blank"
+                        href="https://www.github.com"
+                    >
+                        <FaGithubSquare />
+                    </Link>
+                </div>
             </motion.div>
         </section>
     );
