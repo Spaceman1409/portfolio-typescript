@@ -59,6 +59,7 @@ export default function Contact() {
                         name="senderEmail"
                         className="h-14 px-4 rounded-lg borderBlack"
                         placeholder="Your email"
+                        required
                     />
                     <textarea
                         name="message"
