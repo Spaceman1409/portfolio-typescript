@@ -92,14 +92,14 @@ export default function Intro() {
                     <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
                 </Link>
                 <Link
-                    className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+                    className="hidden sm:flex bg-white p-4 text-gray-700 hover:text-gray-950 items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
                     target="_blank"
                     href="https://www.linkedin.com"
                 >
                     <BsLinkedin />
                 </Link>
                 <Link
-                    className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.15rem] rounded-full focus:scale-[1.15] hover:scale-[1.1] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+                    className="hidden sm:flex bg-white p-4 text-gray-700 items-center gap-2 text-[1.15rem] rounded-full focus:scale-[1.15] hover:scale-[1.1] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
                     target="_blank"
                     href="https://www.github.com"
                 >
